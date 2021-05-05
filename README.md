@@ -22,4 +22,6 @@ This is an every quick and dirty wrapper & builder for sending Discord webhooks.
                 .build()
                 .send();
 ```
+Send something like this to the `some-valid-webhook-url` URL
+[imagine](https://gyazo.com/1db9d86077ad88b0eef4994b84029b6e)
 
