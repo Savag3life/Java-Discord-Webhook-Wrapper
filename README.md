@@ -23,5 +23,5 @@ This is an every quick and dirty wrapper & builder for sending Discord webhooks.
                 .send();
 ```
 Send something like this to the `some-valid-webhook-url` URL
-![imagine](https://gyazo.com/1db9d86077ad88b0eef4994b84029b6e)
+![imagine](https://github.com/Savag3life/Java-Discord-Webhook-Wrapper/blob/main/example.png)
 
