@@ -2,7 +2,7 @@
 This is an every quick and dirty wrapper & builder for sending Discord webhooks. It heavily utilizes Lombok to create a simple builder to build & send the webhook at runtime.
 
 ## Requirements:
-- A valid discord webhook URL
+- [A valid discord webhook URL](https://help.dashe.io/en/articles/2521940-how-to-create-a-discord-webhook-url)
 - Java 8+
 
 ## Usage
