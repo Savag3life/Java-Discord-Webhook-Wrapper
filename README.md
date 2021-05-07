@@ -7,8 +7,7 @@ This is an every quick and dirty wrapper & builder for sending Discord webhooks.
 
 ## Usage
 ```java
-
-        WebHookBuilder.builder()
+        DiscordWebhook.builder()
                 .username("SupremeStrikes") // Required
                 .avatar_url("https://cdn.discordapp.com/emojis/706764727165911052.png?v=1") // Required
                 .author(new WebHookBuilder.Author("A Faction Has Been Striked!", "https://google.com/", "https://cdn.discordapp.com/emojis/685282855768686616.gif?v=1"))

@@ -3,36 +3,36 @@ package life.savag3;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Cleanup;
-import lombok.SneakyThrows;
+import lombok.*;
 
 import javax.net.ssl.HttpsURLConnection;
+import javax.validation.constraints.*;
 import java.awt.*;
 import java.io.OutputStream;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 @Builder
-public class WebHookBuilder {
+@AllArgsConstructor
+public class DiscordWebhook {
 
     // Cosmetic Details
-    private Author author;
-    private String title;
-    private String description;
-    private int color;
-    private Field[] fields;
-    private Image thumbnail;
-    private Image image;
-    private Footer footer;
+    @Getter @Setter @NotBlank private Author author;
+    @Getter @Setter private String title;
+    @Getter @Setter @Size(max = 2048) private String description;
+    @Getter @Setter @Size(max = 2048) private String content;
+    @Getter @Setter @PositiveOrZero private int color;
+    @Getter @Setter @Size(max = 10) private Field[] fields;
+    @Getter @Setter private Image thumbnail;
+    @Getter @Setter private Image image;
+    @Getter @Setter private Footer footer;
 
     // Sender details
-    private String username;
+    @Getter @NotBlank private String username;
     private String avatar_url;
 
     // Delivery Details
-    private String sendTo;
+    @Getter @NotBlank private String sendTo;
 
     // Parse Color into rgb index
     public static int parseColor(Color color) {
@@ -48,7 +48,7 @@ public class WebHookBuilder {
 
         message.addProperty("username", this.username);
         message.addProperty("avatar_url", this.avatar_url);
-        message.addProperty("content", ""); // optional, I never used it so its always "", someone could add a commit to add builder support.
+        message.addProperty("content", this.content);
 
         JsonArray embeds = new JsonArray();
         JsonObject embed = new JsonObject();
@@ -94,11 +94,11 @@ public class WebHookBuilder {
         return true;
     }
 
-    @Builder
+    @AllArgsConstructor
     public static class Field {
 
-        private String name;
-        private String value;
+        @Size(max = 256) private String name;
+        @Size(max = 1024) private String value;
         @Builder.Default private boolean inline = false;
 
         public JsonElement get() {
@@ -126,7 +126,7 @@ public class WebHookBuilder {
     @AllArgsConstructor
     public static class Footer {
 
-        private String text;
+        @Size(max = 2048) private String text;
         private String icon_url;
 
         public JsonElement get() {
@@ -141,7 +141,7 @@ public class WebHookBuilder {
     @AllArgsConstructor
     public static class Author {
 
-        private String name;
+        @Size(max = 256) private String name;
         private String url;
         private String icon;
 
